@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Multiplayer Chess</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chessboard.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header glass-panel">
+            <div class="logo">
+                <i class="fa-solid fa-chess-knight"></i>
+                <h1>Chess<span class="highlight">Mate</span></h1>
+            </div>
+            <div class="header-actions">
+                <button id="theme-toggle" class="icon-btn" title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Left Panel: Player Info & Status -->
+            <aside class="side-panel left-panel glass-panel">
+                <div class="player-info opponent">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Opponent" alt="Opponent Avatar" class="avatar">
+                    <div class="details">
+                        <span class="name">Opponent (AI / Waiting)</span>
+                        <span class="rating">1200</span>
+                    </div>
+                    <div class="timer" id="opponent-timer">10:00</div>
+                </div>
+
+                <div class="game-status-box">
+                    <h3>Status</h3>
+                    <div id="game-status" class="status-indicator">Game initialized. Your move.</div>
+                    
+                    <div class="captured-pieces" id="captured-white"></div>
+                    <div class="captured-pieces" id="captured-black"></div>
+                </div>
+
+                <div class="player-info you">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=You" alt="Your Avatar" class="avatar">
+                    <div class="details">
+                        <span class="name">You</span>
+                        <span class="rating">1200</span>
+                    </div>
+                    <div class="timer" id="your-timer">10:00</div>
+                </div>
+            </aside>
+
+            <!-- Center: Chess Board -->
+            <section class="board-container">
+                <div class="board-wrapper glass-panel">
+                    <div id="board" class="chess-board"></div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Game Controls & History -->
+            <aside class="side-panel right-panel glass-panel">
+                <div class="controls">
+                    <button id="btn-start" class="btn primary"><i class="fa-solid fa-play"></i> New Game</button>
+                    <button id="btn-flip" class="btn secondary"><i class="fa-solid fa-arrows-rotate"></i> Flip Board</button>
+                    <button id="btn-undo" class="btn secondary"><i class="fa-solid fa-rotate-left"></i> Undo</button>
+                </div>
+
+                <div class="history-box">
+                    <h3>Move History</h3>
+                    <div class="history-list" id="move-history">
+                        <!-- Moves appended here -->
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery depends -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Chess.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    
+    <!-- Chessboard.js -->
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    
+    <!-- Socket.IO Client -->
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
