@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: chessmate-backend
+    env: node
+    buildCommand: "cd server && npm install"
+    startCommand: "cd server && node server.js"
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true

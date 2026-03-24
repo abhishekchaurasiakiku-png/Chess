@@ -1,19 +1,28 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
+const cors = require('cors');
 const { Server } = require('socket.io');
 
 const app = express();
+app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: { origin: '*' }
 });
 
+// Mock DB setup (In-Memory Array is inside auth.js)
+console.log('Running with In-Memory Database ✅');
+
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, '../client')));
 
-// Parse JSON bodies (for Phase 5/6 API routes later)
+// Parse JSON bodies for auth API
 app.use(express.json());
+
+// Auth Routes
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 
 // Basic matchmaking state
 let waitingPlayer = null;

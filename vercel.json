@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "buildCommand": "echo 'No build step required for Vanilla HTML CSS JS'",
+  "outputDirectory": "client",
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

@@ -18,6 +18,32 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <h2 id="auth-title">Welcome Back</h2>
+            
+            <form id="auth-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" required placeholder="Enter your username">
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
+                </div>
+                
+                <button type="submit" class="btn primary full-width" id="btn-submit-auth">Login</button>
+                
+                <p class="auth-switch">
+                    <span id="auth-switch-text">Don't have an account?</span> 
+                    <a href="#" id="auth-switch-link">Sign up</a>
+                </p>
+                <p id="auth-error" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
     <div class="app-container">
         <!-- Header -->
         <header class="app-header glass-panel">
@@ -100,10 +126,16 @@
     <!-- Chessboard.js -->
     <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
     
+    <!-- Configuration -->
+    <script src="js/config.js"></script>
+    
     <!-- Socket.IO Client -->
-    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        document.write('<script src="' + BACKEND_URL + '/socket.io/socket.io.js"><\/script>');
+    </script>
     
     <!-- Custom JS -->
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 // Game State variables
-const socket = io();
+const socket = io(BACKEND_URL);
 let myColor = 'w';
 let currentRoom = null;
 let board = null;
